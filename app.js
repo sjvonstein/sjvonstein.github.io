@@ -1,7 +1,8 @@
-document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
+document.getElementById('submitBtn').addEventListener('click', handleFileSelect, false);
 
-function handleFileSelect(event) {
-    const file = event.target.files[0];
+function handleFileSelect() {
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
@@ -9,6 +10,8 @@ function handleFileSelect(event) {
             parseXML(contents);
         };
         reader.readAsText(file);
+    } else {
+        alert("Please select an XML file first.");
     }
 }
 
